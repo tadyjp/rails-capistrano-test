@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: rails-capistrano-test_production
-  username: rails-capistrano-test
-  password: <%= ENV['RAILS-CAPISTRANO-TEST_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
