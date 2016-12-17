@@ -18,7 +18,7 @@ default: &default
 
 development:
   <<: *default
-  database: rails-capistrano-test_development
+  database: rails_capistrano_test_development
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -26,7 +26,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: rails-capistrano-test_test
+  database: rails_capistrano_test_test
   socket: /tmp/mysql.sock
 
 # As with config/secrets.yml, you never want to store sensitive information,
@@ -51,6 +51,6 @@ test:
 production:
   <<: *default
   host: localhost
-  database: rails-capistrano-test_production
+  database: rails_capistrano_test_production
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
