@@ -4,9 +4,6 @@
 /public/system
 /spec/tmp
 
-# Only include if you have production secrets in this file, which is no longer a Rails default
-# config/secrets.yml
-
 ## Environment normalization:
 /.bundle
 /vendor/bundle
