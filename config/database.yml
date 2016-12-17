@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
+  host: localhost
   database: rails-capistrano-test_production
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
