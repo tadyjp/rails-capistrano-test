@@ -5,16 +5,19 @@ app_path = File.dirname(File.dirname(Dir.pwd))
 
 worker_processes 1
 
-working_directory "#{app_path}/current"
+# working_directory "#{app_path}/current"
+# pid "#{app_path}/shared/tmp/pids/unicorn.pid"
+# stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
+# stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
+
+working_directory app_path
+pid "#{app_path}/tmp/pids/unicorn.pid"
+stderr_path "#{app_path}/log/unicorn.stderr.log"
+stdout_path "#{app_path}/log/unicorn.stdout.log"
 
 listen 3000
 
 timeout 60
-
-pid "#{app_path}/shared/tmp/pids/unicorn.pid"
-
-stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
-stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
 
 preload_app true
 GC.respond_to?(:copy_on_write_friendly=) && GC.copy_on_write_friendly = true
@@ -23,9 +26,9 @@ check_client_connection false
 
 run_once = true
 
-before_exec do |_server|
-  ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
-end
+# before_exec do |_server|
+#   ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
+# end
 
 before_fork do |server, worker|
   defined?(ActiveRecord::Base) &&
@@ -47,6 +50,5 @@ before_fork do |server, worker|
 end
 
 after_fork do |_server, _worker|
-  defined?(ActiveRecord::Base) &&
-    ActiveRecord::Base.establish_connection
+  defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
 end
