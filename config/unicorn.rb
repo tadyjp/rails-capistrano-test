@@ -1,15 +1,21 @@
-# template: http://unicorn.bogomips.org/examples/unicorn.conf.rb
-# see: https://github.com/tablexi/capistrano3-unicorn/blob/master/examples/unicorn.rb
-
-app_path = File.dirname(Dir.pwd)
 # app_path = File.expand_path('../../', __FILE__)
+# pid "#{app_path}/tmp/pids/unicorn.pid"
+# stderr_path "#{app_path}/log/unicorn.stderr.log"
+# stdout_path "#{app_path}/log/unicorn.stdout.log"
+
+
+
+app_path = File.dirname(File.dirname(Dir.pwd))
+
 
 worker_processes 1
 
 working_directory app_path
-pid "#{app_path}/tmp/pids/unicorn.pid"
-stderr_path "#{app_path}/log/unicorn.stderr.log"
-stdout_path "#{app_path}/log/unicorn.stdout.log"
+
+pid "#{app_path}/shared/tmp/pids/unicorn.pid"
+stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
+stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
+
 
 listen 3000
 
