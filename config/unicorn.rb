@@ -1,7 +1,7 @@
 # template: http://unicorn.bogomips.org/examples/unicorn.conf.rb
 # see: https://github.com/tablexi/capistrano3-unicorn/blob/master/examples/unicorn.rb
 
-app_path = File.dirname(File.dirname(Dir.pwd))
+app_path = File.dirname(Dir.pwd)
 # app_path = File.expand_path('../../', __FILE__)
 
 worker_processes 1
